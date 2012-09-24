@@ -1,6 +1,8 @@
 # naohta
 *.swp
-*.log
+logs
+messages
+
 
 # github
 *.gem
