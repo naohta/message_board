@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>message board demo</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+</head>
+
+<body>
+  <script>
+    $(function(){
+      m_cd = "00789"
+      show(m_cd);
+    });
+    function show(m_cd){
+      $.get(
+        "show",
+        {
+          m_cd: m_cd
+        },
+        function(res){
+          $("#mb_messages").val(res);
+          $("#mb_messages").scrollTop($("#mb_messages")[0].scrollHeight);
+        },
+        "text"
+      );
+    };
+    function add(m_cd){
+      $.get(
+        "add",
+        {
+          m_cd: m_cd,
+          text: $("#mb_input_area").val()
+        }, 
+        function(res){
+          $("#mb_messages").val(res);
+          $("#mb_messages").scrollTop($("#mb_messages")[0].scrollHeight);
+          $("#mb_input_area").val("");
+        },
+        "text"
+      );
+    };
+  </script>
+
+  <div id="message_board">
+    <textarea id="mb_messages" rows="25" cols="40" readonly style="font-size:200%"></textarea>
+    <br/>
+    <textarea id="mb_input_area" rows="4" cols="40" style="font-size:200%"></textarea>
+    <br/>
+    <input id="mb_add_button" type="button" value="GO！" onclick="add(m_cd)">
+    
+  </div>
+  <iframe width="420" height="315" src="http://www.youtube.com/embed/m-Wjz0e0Fz4" frameborder="0" allowfullscreen></iframe>
+</body>
+</html>
