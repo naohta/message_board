@@ -11,14 +11,14 @@
 <body>
   <script>
     $(function(){
-      m_cd = "00789"
-      show(m_cd);
+      member_code = "00789"
+      show(member_code);
     });
-    function show(m_cd){
+    function show(member_code){
       $.get(
         "show",
         {
-          m_cd: m_cd
+          member_code: member_code
         },
         function(res){
           $("#mb_messages").val(res);
@@ -27,11 +27,11 @@
         "text"
       );
     };
-    function add(m_cd){
+    function add(member_code){
       $.get(
         "add",
         {
-          m_cd: m_cd,
+          member_code: member_code,
           text: $("#mb_input_area").val()
         }, 
         function(res){
@@ -45,11 +45,11 @@
   </script>
 
   <div id="message_board">
-    <textarea id="mb_messages" rows="25" cols="40" readonly style="font-size:200%"></textarea>
+    <textarea id="mb_messages" rows="6" cols="40" readonly style="font-size:200%"></textarea>
     <br/>
     <textarea id="mb_input_area" rows="4" cols="40" style="font-size:200%"></textarea>
     <br/>
-    <input id="mb_add_button" type="button" value="GO！" onclick="add(m_cd)">
+    <input id="mb_add_button" type="button" value="GO！" onclick="add(member_code)">
     
   </div>
   <iframe width="420" height="315" src="http://www.youtube.com/embed/m-Wjz0e0Fz4" frameborder="0" allowfullscreen></iframe>
