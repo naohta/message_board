@@ -1,7 +1,8 @@
 # naohta
 *.swp
-logs
-messages
+logs/*
+messages/*
+!.gitdummy
 
 
 # github
